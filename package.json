@@ -1,0 +1,16 @@
+{
+  "name": "discord-farmbot",
+  "version": "1.0.0",
+  "description": "A Discord bot for analyzing farm images.",
+  "main": "farmbot.js",
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

@@ -1,16 +1,37 @@
 {
   "name": "discord-farmbot",
   "version": "1.0.0",
-  "description": "A Discord bot for analyzing farm images.",
+  "description": "A Discord bot for analyzing farm images using Gemini Vision API",
+  "type": "module",
   "main": "farmbot.js",
   "scripts": {
     "start": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "test": "node tests/test-env.js",
+    "register-commands": "node scripts/register-commands.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "agriculture",
+    "farming",
+    "image-analysis",
+    "gemini-api",
+    "cloudflare-workers"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/discord-farmbot.git"
   },
   "dependencies": {
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
-    "wrangler": "^3.0.0"
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -4,40 +4,88 @@ Discord 側の設定手順:
 1. Discord Developer Portal (https://discord.com/developers/applications) にアクセス
 2. "New Application" をクリックしてアプリを作成
 3. 左メニューの "Bot" を開き "Add Bot" して Bot を作成
-   - "Privileged Gateway Intents" は不要（Gateway ではなく Slash Command を使用）
+   - Bot Token をコピーして保存（後で使用）
 4. 左メニューの "OAuth2 > URL Generator" で以下を選択して招待用URLを生成
-   - Scopes: applications.commands
-   - Bot Permissions: なし（エンドユーザーがコマンド実行するため）
+   - Scopes: applications.commands, bot
+   - Bot Permissions: Send Messages, Use Slash Commands, Read Message History
    - 生成されたURLで Bot をサーバーにインストール
-5. 左メニューの "Interactions & Slash Commands" で新規コマンド "Evaluate" を作成
-   - Name: evaluate
-   - Description: 農作物画像を評価します
+5. 左メニューの "Interactions & Slash Commands" で新規コマンド "analyze" を作成
+   - Name: analyze
+   - Description: 農作物画像を解析してスレッドに結果を投稿します
    - Option を追加
-     • Name: image_url
-     • Type: STRING
+     • Name: image
+     • Type: ATTACHMENT
      • Required: true
+     • Description: 解析したい農作物の画像
 6. 左メニューの "General Information" で "Public Key" をコピー
-7. Cloudflare Workers の設定画面で Environment Variable
+7. Cloudflare Workers の設定画面で Environment Variables を設定
    - DISCORD_PUBLIC_KEY = 上記でコピーした Public Key
-   - （画像解析に外部APIを呼ぶ場合は API_KEY 等も設定）
+   - DISCORD_BOT_TOKEN = 上記でコピーした Bot Token
+   - GEMINI_API_KEY = Google AI Studio で取得したAPI Key
 8. Workers のエンドポイント URL を Discord アプリの "Interactions & Slash Commands > Endpoint URL" に登録
    （例: https://your-worker.example.com/discord-interactions）
+
+Gemini API Key の取得方法:
+1. Google AI Studio (https://makersuite.google.com/app/apikey) にアクセス
+2. "Create API Key" をクリック
+3. 生成されたAPI Keyをコピー
 */
 
 import * as nacl from 'tweetnacl';
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    
+    // ヘルスチェックエンドポイント
+    if (url.pathname === '/health') {
+      return new Response(JSON.stringify({
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        version: '1.0.0',
+        endpoints: {
+          health: '/health',
+          discord: '/ (POST only)'
+        }
+      }), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     const signature = request.headers.get('x-signature-ed25519');
     const timestamp = request.headers.get('x-signature-timestamp');
     const body = await request.text();
 
+    // Discord以外からのリクエスト（ブラウザアクセスなど）の場合
+    if (!signature || !timestamp) {
+      if (request.method === 'GET') {
+        return new Response(JSON.stringify({
+          status: 'Discord Farmbot is running',
+          timestamp: new Date().toISOString(),
+          endpoints: {
+            health: '/health (GET)',
+            discord: '/ (POST with Discord signature)'
+          }
+        }), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+      return new Response('This endpoint requires Discord signature headers', { status: 400 });
+    }
+
     // リクエスト検証
-    const isValid = nacl.sign.detached.verify(
-      new TextEncoder().encode(timestamp + body),
-      hexToUint8Array(signature),
-      hexToUint8Array(env.DISCORD_PUBLIC_KEY)
-    );
+    let isValid = false;
+    try {
+      isValid = nacl.sign.detached.verify(
+        new TextEncoder().encode(timestamp + body),
+        hexToUint8Array(signature),
+        hexToUint8Array(env.DISCORD_PUBLIC_KEY)
+      );
+    } catch (error) {
+      console.error('Signature verification error:', error);
+      return new Response('Invalid signature format', { status: 401 });
+    }
+    
     if (!isValid) {
       return new Response('Invalid request signature', { status: 401 });
     }
@@ -53,19 +101,40 @@ export default {
 
     // Slash Command 受信
     if (payload.type === 2) {
-      const imageUrl = payload.data.options.find(opt => opt.name === 'image_url').value;
+      try {
+        // 画像添付ファイルを取得
+        const imageOption = payload.data.options?.find(opt => opt.name === 'image');
+        if (!imageOption) {
+          return createErrorResponse('画像が添付されていません。');
+        }
 
-      // ここで画像解析ロジックを呼び出し（例: AI API）
-      const analysis = await analyzeImage(imageUrl, env);
-      const result = `画像を評価しました: ${analysis}`;
+        const attachment = payload.data.resolved?.attachments?.[imageOption.value];
+        if (!attachment) {
+          return createErrorResponse('添付ファイルが見つかりません。');
+        }
 
-      return new Response(
-        JSON.stringify({
-          type: 4,
-          data: { content: result },
-        }),
-        { headers: { 'Content-Type': 'application/json' } }
-      );
+        // 画像ファイルかチェック
+        if (!attachment.content_type?.startsWith('image/')) {
+          return createErrorResponse('画像ファイルを添付してください。');
+        }
+
+        // 即座に「解析中...」で応答
+        const deferredResponse = new Response(
+          JSON.stringify({
+            type: 5, // DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+          }),
+          { headers: { 'Content-Type': 'application/json' } }
+        );
+
+        // 非同期で画像解析とスレッド投稿を実行
+        ctx.waitUntil(processImageAnalysis(payload, attachment, env));
+
+        return deferredResponse;
+
+      } catch (error) {
+        console.error('Error processing command:', error);
+        return createErrorResponse('処理中にエラーが発生しました。');
+      }
     }
 
     return new Response('ok');
@@ -74,13 +143,196 @@ export default {
 
 // ユーティリティ関数
 function hexToUint8Array(hex) {
-  return new Uint8Array(hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+  if (!hex || typeof hex !== 'string') {
+    throw new Error('Invalid hex string');
+  }
+  const matches = hex.match(/.{1,2}/g);
+  if (!matches) {
+    throw new Error('Invalid hex format');
+  }
+  return new Uint8Array(matches.map(byte => parseInt(byte, 16)));
 }
 
-// 画像解析のサンプル関数
-async function analyzeImage(url, env) {
-  // 例: 外部AIサービスに fetch
-  // const resp = await fetch(env.AI_API_URL, { ... });
-  // return await resp.json();
-  return '品質良好';
+// Cloudflare Workers最適化Base64変換関数
+function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  
+  // チャンクサイズを小さくしてメモリ効率を改善
+  const chunkSize = 0x8000; // 32KB chunks
+  
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    binary += String.fromCharCode.apply(null, chunk);
+  }
+  
+  return btoa(binary);
+}
+
+function createErrorResponse(message) {
+  return new Response(
+    JSON.stringify({
+      type: 4,
+      data: { content: `❌ ${message}`, flags: 64 }, // EPHEMERAL flag
+    }),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+}
+
+// 非同期で画像解析とスレッド投稿を処理
+async function processImageAnalysis(payload, attachment, env) {
+  try {
+    // 画像解析を実行
+    const analysis = await analyzeImageWithGemini(attachment.url, env);
+    
+    // スレッドに結果を投稿
+    await postToThread(payload, analysis, env);
+    
+    // 元のコマンドに成功メッセージで応答
+    await editOriginalResponse(payload, '✅ 解析完了！結果をスレッドに投稿しました。', env);
+    
+  } catch (error) {
+    console.error('Error in processImageAnalysis:', error);
+    await editOriginalResponse(payload, '❌ 解析中にエラーが発生しました。', env);
+  }
+}
+
+// Gemini Vision APIで画像解析
+async function analyzeImageWithGemini(imageUrl, env) {
+  try {
+    console.log('Fetching image from:', imageUrl);
+    
+    // 画像をBase64に変換
+    const imageResponse = await fetch(imageUrl);
+    if (!imageResponse.ok) {
+      throw new Error(`Failed to fetch image: ${imageResponse.status}`);
+    }
+    
+    // 画像サイズをチェック (実際のバイト数で確認)
+    const imageBuffer = await imageResponse.arrayBuffer();
+    console.log(`Image buffer size: ${imageBuffer.byteLength} bytes`);
+    
+    // 実用的な制限: 500KB
+    if (imageBuffer.byteLength > 500 * 1024) {
+      throw new Error(`Image too large: ${Math.round(imageBuffer.byteLength / 1024)}KB (max 500KB)`);
+    }
+    
+    console.log('Converting image to base64...');
+    
+    // 最もシンプルなBase64変換（中サイズ画像用）
+    if (imageBuffer.byteLength > 500 * 1024) { // 500KB制限
+      throw new Error(`Image too large: ${Math.round(imageBuffer.byteLength / 1024)}KB (max 500KB)`);
+    }
+    
+    const base64Image = btoa(String.fromCharCode(...new Uint8Array(imageBuffer)));
+    
+    console.log(`Base64 conversion completed, length: ${base64Image.length}`);
+    
+    // Content-Typeから適切なMIMEタイプを取得
+    const contentType = imageResponse.headers.get('content-type') || 'image/jpeg';
+    console.log(`Content type: ${contentType}`);
+    
+    // 最小限のリクエスト構造
+    const requestBody = {
+      contents: [{
+        parts: [
+          {
+            text: "この農作物の画像を詳しく解析してください。以下の観点から評価をお願いします：\n\n1. **作物の種類**: 何の植物か特定してください\n2. **成長段階**: 発芽期、成長期、開花期、収穫期のどの段階か\n3. **健康状態**: 葉の色、形、病気や害虫の兆候はないか\n4. **栽培環境**: 土壌の状態、水分状態、日照条件など観察できること\n5. **品質評価**: 全体的な品質と収穫時期の予測\n6. **改善提案**: 栽培管理で改善できる点があれば\n\n日本語で詳しく回答してください。"
+          },
+          {
+            inline_data: {
+              mime_type: contentType,
+              data: base64Image
+            }
+          }
+        ]
+      }]
+    };
+    
+    console.log(`Request body size: ${JSON.stringify(requestBody).length} characters`);
+
+    console.log('Sending request to Gemini API...');
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${env.GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      }
+    );
+    
+    console.log(`Gemini API response status: ${response.status}`);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Gemini API error details:`, errorText);
+      console.error(`Request URL:`, `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent`);
+      console.error(`Request body size:`, JSON.stringify(requestBody).length);
+      throw new Error(`Gemini API error: ${response.status} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('Gemini API response received successfully');
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || '解析結果を取得できませんでした。';
+    
+  } catch (error) {
+    console.error('Gemini API error:', error);
+    return '画像解析中にエラーが発生しました。';
+  }
+}
+
+// スレッドに結果を投稿
+async function postToThread(payload, analysis, env) {
+  const channelId = payload.channel_id;
+  
+  const messageData = {
+    content: `🌱 **農作物画像解析結果**\n\n${analysis}`,
+    message_reference: {
+      message_id: payload.id,
+      channel_id: channelId,
+      fail_if_not_exists: false
+    }
+  };
+
+  const response = await fetch(
+    `https://discord.com/api/v10/channels/${channelId}/messages`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bot ${env.DISCORD_BOT_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(messageData)
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Discord API error: ${response.status}`);
+  }
+}
+
+// 元のコマンド応答を編集
+async function editOriginalResponse(payload, content, env) {
+  const applicationId = payload.application_id;
+  const interactionToken = payload.token;
+
+  const response = await fetch(
+    `https://discord.com/api/v10/webhooks/${applicationId}/${interactionToken}/messages/@original`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content: content,
+        flags: 64 // EPHEMERAL
+      })
+    }
+  );
+
+  if (!response.ok) {
+    console.error(`Failed to edit original response: ${response.status}`);
+  }
 }

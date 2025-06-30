@@ -284,12 +284,51 @@ async function analyzeImageWithGemini(imageUrl, env) {
   }
 }
 
-// スレッドに結果を投稿
+// スレッドに結果を投稿（画像付き）
 async function postToThread(payload, analysis, env) {
   const channelId = payload.channel_id;
   
+  // 元の画像情報を取得
+  const imageOption = payload.data.options?.find(opt => opt.name === 'image');
+  const attachment = payload.data.resolved?.attachments?.[imageOption.value];
+  
+  // 解析結果が長い場合は分割
+  const maxDescriptionLength = 4096; // Discord Embed description limit
+  let description = analysis;
+  
+  if (description.length > maxDescriptionLength) {
+    description = description.substring(0, maxDescriptionLength - 3) + "...";
+  }
+  
   const messageData = {
-    content: `🌱 **農作物画像解析結果**\n\n${analysis}`,
+    content: `🌱 **農作物画像解析結果**`,
+    embeds: [
+      {
+        title: "📊 AI画像解析レポート",
+        description: description,
+        color: 0x4CAF50, // Material Design Green
+        image: {
+          url: attachment.url
+        },
+        fields: [
+          {
+            name: "📁 ファイル情報",
+            value: `**ファイル名**: ${attachment.filename}\n**サイズ**: ${Math.round(attachment.size / 1024)}KB\n**形式**: ${attachment.content_type}`,
+            inline: true
+          },
+          {
+            name: "🤖 解析エンジン",
+            value: "Google Gemini Vision API\n(gemini-1.5-pro)",
+            inline: true
+          }
+        ],
+        footer: {
+          text: "Discord Farmbot • 農作物画像解析システム",
+          icon_url: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f331.png"
+        },
+        timestamp: new Date().toISOString()
+      }
+    ],
     message_reference: {
       message_id: payload.id,
       channel_id: channelId,
@@ -297,6 +336,9 @@ async function postToThread(payload, analysis, env) {
     }
   };
 
+  // 解析結果が非常に長い場合は、追加メッセージで残りを送信
+  const remainingText = analysis.substring(maxDescriptionLength - 3);
+  
   const response = await fetch(
     `https://discord.com/api/v10/channels/${channelId}/messages`,
     {
@@ -310,7 +352,33 @@ async function postToThread(payload, analysis, env) {
   );
 
   if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Discord API error:', response.status, errorText);
     throw new Error(`Discord API error: ${response.status}`);
+  }
+
+  // 残りのテキストがある場合は追加メッセージを送信
+  if (remainingText && remainingText.length > 0) {
+    const additionalMessageData = {
+      content: `📄 **解析結果の続き**\n\`\`\`\n${remainingText}\n\`\`\``,
+      message_reference: {
+        message_id: payload.id,
+        channel_id: channelId,
+        fail_if_not_exists: false
+      }
+    };
+
+    await fetch(
+      `https://discord.com/api/v10/channels/${channelId}/messages`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bot ${env.DISCORD_BOT_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(additionalMessageData)
+      }
+    );
   }
 }
 

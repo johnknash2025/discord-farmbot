@@ -153,17 +153,22 @@ function hexToUint8Array(hex) {
   return new Uint8Array(matches.map(byte => parseInt(byte, 16)));
 }
 
-// Cloudflare Workers最適化Base64変換関数
+// 安全なBase64変換関数（スタックオーバーフロー対策）
 function arrayBufferToBase64(buffer) {
   const bytes = new Uint8Array(buffer);
   let binary = '';
   
-  // チャンクサイズを小さくしてメモリ効率を改善
-  const chunkSize = 0x8000; // 32KB chunks
+  // より小さなチャンクサイズでスタックオーバーフローを防ぐ
+  const chunkSize = 8192; // 8KB chunks
   
   for (let i = 0; i < bytes.length; i += chunkSize) {
     const chunk = bytes.subarray(i, i + chunkSize);
-    binary += String.fromCharCode.apply(null, chunk);
+    // apply の引数制限を避けるため、さらに小さく分割
+    let chunkBinary = '';
+    for (let j = 0; j < chunk.length; j++) {
+      chunkBinary += String.fromCharCode(chunk[j]);
+    }
+    binary += chunkBinary;
   }
   
   return btoa(binary);
@@ -219,12 +224,8 @@ async function analyzeImageWithGemini(imageUrl, env) {
     
     console.log('Converting image to base64...');
     
-    // 最もシンプルなBase64変換（中サイズ画像用）
-    if (imageBuffer.byteLength > 500 * 1024) { // 500KB制限
-      throw new Error(`Image too large: ${Math.round(imageBuffer.byteLength / 1024)}KB (max 500KB)`);
-    }
-    
-    const base64Image = btoa(String.fromCharCode(...new Uint8Array(imageBuffer)));
+    // 安全なチャンク処理Base64変換
+    const base64Image = arrayBufferToBase64(imageBuffer);
     
     console.log(`Base64 conversion completed, length: ${base64Image.length}`);
     

@@ -1,11 +1,11 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
-import { viteBundler } from '@vuepress/bundler-vite'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 
 export default defineUserConfig({
   // バンドラー設定
-  bundler: viteBundler({}),
+  bundler: webpackBundler({}),
   // サイト設定
   lang: 'ja-JP',
   title: 'Discord Farmbot',

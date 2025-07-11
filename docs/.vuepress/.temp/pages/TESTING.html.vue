@@ -1,0 +1,152 @@
+<template><div><h1 id="🧪-discord-farmbot-テストガイド" tabindex="-1"><a class="header-anchor" href="#🧪-discord-farmbot-テストガイド"><span>🧪 Discord Farmbot テストガイド</span></a></h1>
+<h2 id="📋-テスト前の準備" tabindex="-1"><a class="header-anchor" href="#📋-テスト前の準備"><span>📋 テスト前の準備</span></a></h2>
+<h3 id="_1-依存関係のインストール" tabindex="-1"><a class="header-anchor" href="#_1-依存関係のインストール"><span>1. 依存関係のインストール</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token function">npm</span> <span class="token function">install</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-環境変数の設定" tabindex="-1"><a class="header-anchor" href="#_2-環境変数の設定"><span>2. 環境変数の設定</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># サンプルファイルをコピー</span></span>
+<span class="line"><span class="token function">cp</span> .dev.vars.example .dev.vars</span>
+<span class="line"></span>
+<span class="line"><span class="token comment"># 実際の値を設定</span></span>
+<span class="line"><span class="token comment"># .dev.vars ファイルを編集して以下を設定:</span></span>
+<span class="line"><span class="token comment"># DISCORD_PUBLIC_KEY=your_actual_discord_public_key</span></span>
+<span class="line"><span class="token comment"># DISCORD_BOT_TOKEN=your_actual_discord_bot_token  </span></span>
+<span class="line"><span class="token comment"># GEMINI_API_KEY=your_actual_gemini_api_key</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-discord-アプリケーションの設定" tabindex="-1"><a class="header-anchor" href="#_3-discord-アプリケーションの設定"><span>3. Discord アプリケーションの設定</span></a></h3>
+<h4 id="discord-developer-portal-での設定" tabindex="-1"><a class="header-anchor" href="#discord-developer-portal-での設定"><span>Discord Developer Portal での設定:</span></a></h4>
+<ol>
+<li>https://discord.com/developers/applications にアクセス</li>
+<li>&quot;New Application&quot; をクリック</li>
+<li>Bot を作成して Token を取得</li>
+<li>OAuth2 で以下の権限を設定:
+<ul>
+<li>Scopes: <code v-pre>applications.commands</code>, <code v-pre>bot</code></li>
+<li>Bot Permissions: <code v-pre>Send Messages</code>, <code v-pre>Use Slash Commands</code>, <code v-pre>Read Message History</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="slash-command-の登録" tabindex="-1"><a class="header-anchor" href="#slash-command-の登録"><span>Slash Command の登録:</span></a></h4>
+<ul>
+<li>Name: <code v-pre>analyze</code></li>
+<li>Description: <code v-pre>農作物画像を解析してスレッドに結果を投稿します</code></li>
+<li>Option:
+<ul>
+<li>Name: <code v-pre>image</code></li>
+<li>Type: <code v-pre>ATTACHMENT</code></li>
+<li>Required: <code v-pre>true</code></li>
+<li>Description: <code v-pre>解析したい農作物の画像</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_4-gemini-api-key-の取得" tabindex="-1"><a class="header-anchor" href="#_4-gemini-api-key-の取得"><span>4. Gemini API Key の取得</span></a></h3>
+<ol>
+<li>https://makersuite.google.com/app/apikey にアクセス</li>
+<li>&quot;Create API Key&quot; をクリック</li>
+<li>生成されたキーを .dev.vars に設定</li>
+</ol>
+<h2 id="🚀-テスト手順" tabindex="-1"><a class="header-anchor" href="#🚀-テスト手順"><span>🚀 テスト手順</span></a></h2>
+<h3 id="phase-1-ローカル構文テスト" tabindex="-1"><a class="header-anchor" href="#phase-1-ローカル構文テスト"><span>Phase 1: ローカル構文テスト</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># 構文チェック</span></span>
+<span class="line"><span class="token function">node</span> <span class="token parameter variable">-c</span> farmbot.js</span>
+<span class="line"></span>
+<span class="line"><span class="token comment"># モックテスト実行</span></span>
+<span class="line"><span class="token function">node</span> test-bot.js</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="phase-2-wrangler-開発サーバーテスト" tabindex="-1"><a class="header-anchor" href="#phase-2-wrangler-開発サーバーテスト"><span>Phase 2: Wrangler 開発サーバーテスト</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># ローカル開発サーバー起動</span></span>
+<span class="line"><span class="token function">npm</span> run start</span>
+<span class="line"><span class="token comment"># または</span></span>
+<span class="line">npx wrangler dev</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="phase-3-discord-統合テスト" tabindex="-1"><a class="header-anchor" href="#phase-3-discord-統合テスト"><span>Phase 3: Discord 統合テスト</span></a></h3>
+<h4 id="_3-1-エンドポイント設定" tabindex="-1"><a class="header-anchor" href="#_3-1-エンドポイント設定"><span>3.1 エンドポイント設定</span></a></h4>
+<ol>
+<li>Wrangler dev で表示されるローカルURL (例: <code v-pre>http://localhost:8787</code>) をコピー</li>
+<li>Discord Developer Portal の &quot;Interactions Endpoint URL&quot; に設定</li>
+<li>ngrok などを使用して外部アクセス可能にする場合:<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># 別ターミナルで</span></span>
+<span class="line">ngrok http <span class="token number">8787</span></span>
+<span class="line"><span class="token comment"># 表示されたHTTPS URLをDiscordに設定</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+<h4 id="_3-2-実際のテスト" tabindex="-1"><a class="header-anchor" href="#_3-2-実際のテスト"><span>3.2 実際のテスト</span></a></h4>
+<ol>
+<li>Discord サーバーで <code v-pre>/analyze</code> コマンドを実行</li>
+<li>農作物の画像を添付</li>
+<li>以下を確認:
+<ul>
+<li>✅ 即座に「解析中...」メッセージが表示される</li>
+<li>✅ 数秒後にスレッドに解析結果が投稿される</li>
+<li>✅ 元のコマンドが「解析完了！」メッセージに更新される</li>
+</ul>
+</li>
+</ol>
+<h2 id="🔍-トラブルシューティング" tabindex="-1"><a class="header-anchor" href="#🔍-トラブルシューティング"><span>🔍 トラブルシューティング</span></a></h2>
+<h3 id="よくある問題と解決法" tabindex="-1"><a class="header-anchor" href="#よくある問題と解決法"><span>よくある問題と解決法</span></a></h3>
+<h4 id="_1-署名検証エラー" tabindex="-1"><a class="header-anchor" href="#_1-署名検証エラー"><span>1. 署名検証エラー</span></a></h4>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">Error: Invalid request signature</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解決法</strong>: DISCORD_PUBLIC_KEY が正しく設定されているか確認</p>
+<h4 id="_2-bot-token-エラー" tabindex="-1"><a class="header-anchor" href="#_2-bot-token-エラー"><span>2. Bot Token エラー</span></a></h4>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">Error: Discord API error: 401</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解決法</strong>: DISCORD_BOT_TOKEN が正しく設定されているか確認</p>
+<h4 id="_3-gemini-api-エラー" tabindex="-1"><a class="header-anchor" href="#_3-gemini-api-エラー"><span>3. Gemini API エラー</span></a></h4>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">Error: Gemini API error: 400</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解決法</strong>:</p>
+<ul>
+<li>GEMINI_API_KEY が正しく設定されているか確認</li>
+<li>API クォータが残っているか確認</li>
+<li>画像サイズが制限内か確認</li>
+</ul>
+<h4 id="_4-画像取得エラー" tabindex="-1"><a class="header-anchor" href="#_4-画像取得エラー"><span>4. 画像取得エラー</span></a></h4>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">Error: Failed to fetch image</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><strong>解決法</strong>:</p>
+<ul>
+<li>Discord の画像URLが有効か確認</li>
+<li>ネットワーク接続を確認</li>
+<li>画像ファイル形式が対応しているか確認</li>
+</ul>
+<h3 id="デバッグ用ログ確認" tabindex="-1"><a class="header-anchor" href="#デバッグ用ログ確認"><span>デバッグ用ログ確認</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># Wrangler のログを確認</span></span>
+<span class="line">npx wrangler <span class="token function">tail</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment"># ローカル開発時のコンソールログを確認</span></span>
+<span class="line"><span class="token comment"># ブラウザの開発者ツールでネットワークタブを確認</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="📊-テスト結果の確認項目" tabindex="-1"><a class="header-anchor" href="#📊-テスト結果の確認項目"><span>📊 テスト結果の確認項目</span></a></h2>
+<h3 id="✅-成功パターン" tabindex="-1"><a class="header-anchor" href="#✅-成功パターン"><span>✅ 成功パターン</span></a></h3>
+<ul>
+<li>[ ] コマンドが正常に認識される</li>
+<li>[ ] 画像添付が正しく処理される</li>
+<li>[ ] Gemini API から解析結果が返る</li>
+<li>[ ] スレッドに結果が投稿される</li>
+<li>[ ] エラーハンドリングが適切に動作する</li>
+</ul>
+<h3 id="❌-失敗パターンのテスト" tabindex="-1"><a class="header-anchor" href="#❌-失敗パターンのテスト"><span>❌ 失敗パターンのテスト</span></a></h3>
+<ul>
+<li>[ ] 画像以外のファイルを添付した場合</li>
+<li>[ ] 画像を添付しなかった場合</li>
+<li>[ ] 無効な画像URLの場合</li>
+<li>[ ] API制限に達した場合</li>
+</ul>
+<h2 id="🎯-次のステップ" tabindex="-1"><a class="header-anchor" href="#🎯-次のステップ"><span>🎯 次のステップ</span></a></h2>
+<p>テストが成功したら:</p>
+<ol>
+<li><strong>本番デプロイ</strong>: <code v-pre>npm run deploy</code></li>
+<li><strong>自動検知機能の追加</strong>: Cron Triggers を使用した自動監視</li>
+<li><strong>機能拡張</strong>: 複数画像対応、解析履歴保存など</li>
+</ol>
+<p>テストで問題が発生した場合:</p>
+<ol>
+<li>ログを確認して原因を特定</li>
+<li>設定値を再確認</li>
+<li>Discord/Gemini APIの制限を確認</li>
+<li>必要に応じてコードを修正</li>
+</ol>
+</div></template>
+
+

@@ -1,0 +1,119 @@
+<template><div><h1 id="はじめに" tabindex="-1"><a class="header-anchor" href="#はじめに"><span>はじめに</span></a></h1>
+<p>Discord Farmbotへようこそ！このガイドでは、初めてDiscord Farmbotを使用する方向けに、基本的な使用方法を説明します。</p>
+<h2 id="🎯-discord-farmbotとは" tabindex="-1"><a class="header-anchor" href="#🎯-discord-farmbotとは"><span>🎯 Discord Farmbotとは？</span></a></h2>
+<p>Discord Farmbotは、農作物の画像を解析してくれるAI搭載のDiscord Botです。Gemini Vision APIを使用して、以下のような詳細な分析を提供します：</p>
+<ul>
+<li><strong>作物の種類識別</strong> - 植物の正確な特定</li>
+<li><strong>成長段階の判定</strong> - 発芽期から収穫期まで</li>
+<li><strong>健康状態の診断</strong> - 病気や害虫の兆候検出</li>
+<li><strong>栽培アドバイス</strong> - 最適な管理方法の提案</li>
+</ul>
+<h2 id="🚀-クイックスタート" tabindex="-1"><a class="header-anchor" href="#🚀-クイックスタート"><span>🚀 クイックスタート</span></a></h2>
+<h3 id="step-1-botをサーバーに招待" tabindex="-1"><a class="header-anchor" href="#step-1-botをサーバーに招待"><span>Step 1: Botをサーバーに招待</span></a></h3>
+<ol>
+<li>サーバー管理者に以下の招待リンクを共有してもらいます</li>
+<li>必要な権限が付与されていることを確認します：
+<ul>
+<li>メッセージの送信</li>
+<li>スラッシュコマンドの使用</li>
+<li>メッセージ履歴の表示</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-2-基本的な使用方法" tabindex="-1"><a class="header-anchor" href="#step-2-基本的な使用方法"><span>Step 2: 基本的な使用方法</span></a></h3>
+<ol>
+<li>
+<p><strong>コマンドを実行</strong></p>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">/analyze</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
+<li>
+<p><strong>画像を添付</strong></p>
+<ul>
+<li>農作物の写真を選択</li>
+<li>ファイルサイズは500KB以下</li>
+<li>対応形式：PNG, JPEG, WEBP</li>
+</ul>
+</li>
+<li>
+<p><strong>結果を確認</strong></p>
+<ul>
+<li>数秒後にスレッドに詳細な解析結果が投稿されます</li>
+<li>元のメッセージが「✅ 解析完了！」に更新されます</li>
+</ul>
+</li>
+</ol>
+<h2 id="📸-良い写真を撮るコツ" tabindex="-1"><a class="header-anchor" href="#📸-良い写真を撮るコツ"><span>📸 良い写真を撮るコツ</span></a></h2>
+<h3 id="✅-推奨される写真" tabindex="-1"><a class="header-anchor" href="#✅-推奨される写真"><span>✅ 推奨される写真</span></a></h3>
+<ul>
+<li><strong>明るい自然光</strong> - 屋外の日中が最適</li>
+<li><strong>クリアな焦点</strong> - 作物にピントが合っている</li>
+<li><strong>適切な距離</strong> - 作物全体が写る距離</li>
+<li><strong>複数角度</strong> - 葉、茎、果実など様々な部分</li>
+</ul>
+<h3 id="❌-避けるべき写真" tabindex="-1"><a class="header-anchor" href="#❌-避けるべき写真"><span>❌ 避けるべき写真</span></a></h3>
+<ul>
+<li><strong>暗すぎる</strong> - 夜間や室内の暗い場所</li>
+<li><strong>ぼやけている</strong> - 手ぶれやピンボケ</li>
+<li><strong>遠すぎる</strong> - 作物の詳細が見えない</li>
+<li><strong>加工済み</strong> - フィルターや過度な編集</li>
+</ul>
+<h2 id="📊-解析結果の見方" tabindex="-1"><a class="header-anchor" href="#📊-解析結果の見方"><span>📊 解析結果の見方</span></a></h2>
+<p>解析結果には以下の情報が含まれます：</p>
+<h3 id="基本情報" tabindex="-1"><a class="header-anchor" href="#基本情報"><span>基本情報</span></a></h3>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">🌱 作物: トマト (Solanum lycopersicum)</span>
+<span class="line">📅 成長段階: 開花期</span>
+<span class="line">🏥 健康状態: 良好</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="詳細分析" tabindex="-1"><a class="header-anchor" href="#詳細分析"><span>詳細分析</span></a></h3>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">🔍 詳細分析:</span>
+<span class="line">• 葉の色: 健康的な緑色</span>
+<span class="line">• 茎の状態: しっかりとした成長</span>
+<span class="line">• 花の状態: 正常な開花</span>
+<span class="line">• 土壌状態: 適切な水分レベル</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="推奨アクション" tabindex="-1"><a class="header-anchor" href="#推奨アクション"><span>推奨アクション</span></a></h3>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code class="language-text"><span class="line">💡 推奨アクション:</span>
+<span class="line">• 定期的な水やり継続</span>
+<span class="line">• 支柱の設置を検討</span>
+<span class="line">• 2週間後の追肥を推奨</span>
+<span class="line">• 害虫チェックを継続</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🔧-トラブルシューティング" tabindex="-1"><a class="header-anchor" href="#🔧-トラブルシューティング"><span>🔧 トラブルシューティング</span></a></h2>
+<h3 id="よくある問題" tabindex="-1"><a class="header-anchor" href="#よくある問題"><span>よくある問題</span></a></h3>
+<h4 id="「画像が大きすぎます」エラー" tabindex="-1"><a class="header-anchor" href="#「画像が大きすぎます」エラー"><span>「画像が大きすぎます」エラー</span></a></h4>
+<p><strong>原因</strong>: 画像ファイルが500KBを超えている
+<strong>解決法</strong>: 画像を圧縮するか、解像度を下げてください</p>
+<h4 id="「画像ファイルを添付してください」エラー" tabindex="-1"><a class="header-anchor" href="#「画像ファイルを添付してください」エラー"><span>「画像ファイルを添付してください」エラー</span></a></h4>
+<p><strong>原因</strong>: 画像以外のファイルが添付されている
+<strong>解決法</strong>: PNG、JPEG、WEBP形式の画像を添付してください</p>
+<h4 id="「解析に失敗しました」エラー" tabindex="-1"><a class="header-anchor" href="#「解析に失敗しました」エラー"><span>「解析に失敗しました」エラー</span></a></h4>
+<p><strong>原因</strong>: 画像が不鮮明、または作物が認識できない
+<strong>解決法</strong>: より鮮明で明るい画像を撮り直してください</p>
+<h3 id="サポートが必要な場合" tabindex="-1"><a class="header-anchor" href="#サポートが必要な場合"><span>サポートが必要な場合</span></a></h3>
+<p>問題が解決しない場合は、以下の方法でサポートを受けられます：</p>
+<ol>
+<li><strong>GitHub Issues</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">バグ報告・機能要望</a></li>
+<li><strong>Discord サポートサーバー</strong>: <a href="https://discord.gg/your-support-server" target="_blank" rel="noopener noreferrer">リアルタイムサポート</a></li>
+<li><strong>ドキュメント</strong>: <a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> | <a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">トラブルシューティング</a></li>
+</ol>
+<h2 id="🎓-次のステップ" tabindex="-1"><a class="header-anchor" href="#🎓-次のステップ"><span>🎓 次のステップ</span></a></h2>
+<p>基本的な使用方法を理解したら、以下のページも参考にしてください：</p>
+<ul>
+<li><a href="/user-guide/commands.html" target="_blank" rel="noopener noreferrer">コマンド詳細</a> - 全コマンドの詳細説明</li>
+<li><a href="/user-guide/image-requirements.html" target="_blank" rel="noopener noreferrer">画像要件</a> - 最適な画像の撮り方</li>
+<li><a href="/user-guide/analysis-results.html" target="_blank" rel="noopener noreferrer">解析結果</a> - 結果の詳細な読み方</li>
+<li><a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> - よくある質問と回答</li>
+</ul>
+<hr>
+<div class="hint-container tip">
+<p class="hint-container-title">💡 ヒント</p>
+<p>最初は簡単な野菜（トマト、キュウリ、レタスなど）から試してみることをお勧めします。これらの作物は認識精度が高く、詳細な分析結果を得やすいです。</p>
+</div>
+<div class="hint-container warning">
+<p class="hint-container-title">⚠️ 注意</p>
+<p>Discord Farmbotの分析結果は参考情報です。重要な農業判断については、必ず専門家にご相談ください。</p>
+</div>
+</div></template>
+
+

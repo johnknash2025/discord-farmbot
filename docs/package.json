@@ -1,0 +1,25 @@
+{
+  "name": "discord-farmbot-docs",
+  "version": "1.0.0",
+  "description": "Discord Farmbot Documentation Site",
+  "scripts": {
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build",
+    "docs:serve": "vuepress serve .vuepress/dist"
+  },
+  "devDependencies": {
+    "vuepress": "^2.0.0-rc.0",
+    "@vuepress/theme-default": "^2.0.0-rc.0",
+    "@vuepress/plugin-google-analytics": "^2.0.0-rc.0",
+    "@vuepress/bundler-vite": "^2.0.0-rc.0"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "agriculture",
+    "documentation",
+    "vuepress"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

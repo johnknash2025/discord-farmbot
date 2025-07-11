@@ -318,7 +318,8 @@ async function postToThread(payload, analysis, env) {
           },
           {
             name: "🤖 解析エンジン",
-            value: "Google Gemini Vision API\n(gemini-1.5-pro)",
+            value: "Google Gemini Vision API
+(gemini-1.5-pro)",
             inline: true
           }
         ],

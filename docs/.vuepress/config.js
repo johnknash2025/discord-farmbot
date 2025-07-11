@@ -24,6 +24,14 @@ export default defineUserConfig({
     ['meta', { property: 'og:description', content: '農作物画像解析Discord Botの完全ドキュメント' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:image', content: '/images/farmbot-og.png' }],
+    // Google Analytics (gtag.js)
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-HPC9WP899Q' }],
+    ['script', {}, `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HPC9WP899Q');
+    `],
   ],
 
   // テーマ設定
@@ -131,14 +139,9 @@ export default defineUserConfig({
   plugins: [
     // Google Analytics
     googleAnalyticsPlugin({
-      id: 'G-XXXXXXXXXX', // 実際のGoogle Analytics IDに置き換え
+      id: 'G-HPC9WP899Q', // 実際のGoogle Analytics ID
     }),
   ],
 
-  // Markdown設定
-  markdown: {
-    code: {
-      lineNumbers: true,
-    },
-  },
+  // Markdown設定は削除（警告対応）
 })

@@ -24,11 +24,11 @@ Discord Farmbotの開発環境を構築するための詳細ガイドです。
 
 ```bash
 # HTTPSでクローン
-git clone https://github.com/yourusername/discord-farmbot.git
+git clone https://github.com/johnknash2025/discord-farmbot.git
 cd discord-farmbot
 
 # または SSH でクローン
-git clone git@github.com:yourusername/discord-farmbot.git
+git clone git@github.com:johnknash2025/discord-farmbot.git
 cd discord-farmbot
 ```
 

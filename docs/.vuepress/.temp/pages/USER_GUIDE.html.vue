@@ -179,7 +179,7 @@ A: インターネット接続が必要です。Gemini APIとの通信が必要�
 <p>最新のアップデート情報は以下で確認できます：</p>
 <ul>
 <li><RouteLink to="/CHANGELOG.html">CHANGELOG.md</RouteLink></li>
-<li><a href="https://github.com/yourusername/discord-farmbot/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></li>
+<li><a href="https://github.com/johnknash2025/discord-farmbot/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></li>
 <li>Discord サーバーのアナウンス</li>
 </ul>
 <h2 id="🤝-コミュニティ" tabindex="-1"><a class="header-anchor" href="#🤝-コミュニティ"><span>🤝 コミュニティ</span></a></h2>

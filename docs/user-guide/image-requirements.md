@@ -247,7 +247,7 @@ Discord Farmbotで最適な解析結果を得るための画像要件と撮影�
 
 ### 参考リソース
 - [Discord サポートサーバー](https://discord.gg/Gq9jPaMX8g) - 撮影のコツを共有
-- [GitHub Issues](https://github.com/yourusername/discord-farmbot/issues) - 改善要望
+- [GitHub Issues](https://github.com/johnknash2025/discord-farmbot/issues) - 改善要望
 - [FAQ](/user-guide/faq.html) - よくある質問
 
 ---

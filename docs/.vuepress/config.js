@@ -69,7 +69,7 @@ export default defineUserConfig({
       },
       {
         text: 'GitHub',
-        link: 'https://github.com/yourusername/discord-farmbot',
+        link: 'https://github.com/johnknash2025/discord-farmbot',
       },
     ],
 
@@ -116,7 +116,7 @@ export default defineUserConfig({
     },
 
     // リポジトリ設定
-    repo: 'yourusername/discord-farmbot',
+    repo: 'johnknash2025/discord-farmbot',
     repoLabel: 'GitHub',
     docsDir: 'docs',
     docsBranch: 'main',

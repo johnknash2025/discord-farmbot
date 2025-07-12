@@ -9,7 +9,7 @@
 <h3 id="開発者の方" tabindex="-1"><a class="header-anchor" href="#開発者の方"><span>開発者の方</span></a></h3>
 <p>自分のサーバーにDiscord Farmbotをデプロイしましょう：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># リポジトリをクローン</span></span>
-<span class="line"><span class="token function">git</span> clone https://github.com/yourusername/discord-farmbot.git</span>
+<span class="line"><span class="token function">git</span> clone https://github.com/johnknash2025/discord-farmbot.git</span>
 <span class="line"><span class="token builtin class-name">cd</span> discord-farmbot</span>
 <span class="line"></span>
 <span class="line"><span class="token comment"># 依存関係をインストール</span></span>
@@ -103,7 +103,7 @@
 <p><a href="/developer-guide/contributing.html" target="_blank" rel="noopener noreferrer">コミュニティに参加する →</a></p>
 <h2 id="📄-ライセンス" tabindex="-1"><a class="header-anchor" href="#📄-ライセンス"><span>📄 ライセンス</span></a></h2>
 <p>Discord FarmbotはMITライセンスの下で公開されています。商用利用も含めて自由にご利用いただけます。</p>
-<p><a href="https://github.com/yourusername/discord-farmbot/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">ライセンス詳細を見る →</a></p>
+<p><a href="https://github.com/johnknash2025/discord-farmbot/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">ライセンス詳細を見る →</a></p>
 </div></template>
 
 

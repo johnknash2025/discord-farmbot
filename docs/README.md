@@ -47,7 +47,7 @@ Discord Farmbotを使って農作物の画像解析を始めましょう：
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/yourusername/discord-farmbot.git
+git clone https://github.com/johnknash2025/discord-farmbot.git
 cd discord-farmbot
 
 # 依存関係をインストール
@@ -160,7 +160,7 @@ Discord Farmbotは活発なコミュニティに支えられています：
 
 Discord FarmbotはMITライセンスの下で公開されています。商用利用も含めて自由にご利用いただけます。
 
-[ライセンス詳細を見る →](https://github.com/yourusername/discord-farmbot/blob/main/LICENSE)
+[ライセンス詳細を見る →](https://github.com/johnknash2025/discord-farmbot/blob/main/LICENSE)
 
 <style>
 .stats-container {

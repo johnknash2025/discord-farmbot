@@ -183,7 +183,7 @@ wrangler tail | grep ERROR
 - 🤝 コミュニティメンバーからのサポート
 
 #### 2. GitHub Issues
-**URL**: [GitHub Issues](https://github.com/yourusername/discord-farmbot/issues)
+**URL**: [GitHub Issues](https://github.com/johnknash2025/discord-farmbot/issues)
 - 🐛 バグ報告
 - 💡 機能要望
 - 📖 ドキュメント改善提案
@@ -240,7 +240,7 @@ wrangler tail | grep ERROR
 
 ### メンテナンス情報の確認
 - **Discord サーバー**: `#お知らせ` チャンネル
-- **GitHub**: [Releases](https://github.com/yourusername/discord-farmbot/releases)
+- **GitHub**: [Releases](https://github.com/johnknash2025/discord-farmbot/releases)
 - **ステータスページ**: https://status.farmbot.example.com
 
 ---

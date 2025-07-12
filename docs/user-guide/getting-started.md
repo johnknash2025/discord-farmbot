@@ -102,7 +102,7 @@ Discord Farmbotは、農作物の画像を解析してくれるAI搭載のDiscor
 
 問題が解決しない場合は、以下の方法でサポートを受けられます：
 
-1. **GitHub Issues**: [バグ報告・機能要望](https://github.com/yourusername/discord-farmbot/issues)
+1. **GitHub Issues**: [バグ報告・機能要望](https://github.com/johnknash2025/discord-farmbot/issues)
 2. **Discord サポートサーバー**: [リアルタイムサポート](https://discord.gg/Gq9jPaMX8g)
 3. **ドキュメント**: [FAQ](/user-guide/faq.html) | [トラブルシューティング](/user-guide/troubleshooting.html)
 

@@ -18,11 +18,11 @@
 <h2 id="📦-プロジェクトのセットアップ" tabindex="-1"><a class="header-anchor" href="#📦-プロジェクトのセットアップ"><span>📦 プロジェクトのセットアップ</span></a></h2>
 <h3 id="_1-リポジトリのクローン" tabindex="-1"><a class="header-anchor" href="#_1-リポジトリのクローン"><span>1. リポジトリのクローン</span></a></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># HTTPSでクローン</span></span>
-<span class="line"><span class="token function">git</span> clone https://github.com/yourusername/discord-farmbot.git</span>
+<span class="line"><span class="token function">git</span> clone https://github.com/johnknash2025/discord-farmbot.git</span>
 <span class="line"><span class="token builtin class-name">cd</span> discord-farmbot</span>
 <span class="line"></span>
 <span class="line"><span class="token comment"># または SSH でクローン</span></span>
-<span class="line"><span class="token function">git</span> clone git@github.com:yourusername/discord-farmbot.git</span>
+<span class="line"><span class="token function">git</span> clone git@github.com:johnknash2025/discord-farmbot.git</span>
 <span class="line"><span class="token builtin class-name">cd</span> discord-farmbot</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-依存関係のインストール" tabindex="-1"><a class="header-anchor" href="#_2-依存関係のインストール"><span>2. 依存関係のインストール</span></a></h3>

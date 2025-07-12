@@ -93,8 +93,8 @@
 <h3 id="サポートが必要な場合" tabindex="-1"><a class="header-anchor" href="#サポートが必要な場合"><span>サポートが必要な場合</span></a></h3>
 <p>問題が解決しない場合は、以下の方法でサポートを受けられます：</p>
 <ol>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">バグ報告・機能要望</a></li>
-<li><strong>Discord サポートサーバー</strong>: <a href="https://discord.gg/your-support-server" target="_blank" rel="noopener noreferrer">リアルタイムサポート</a></li>
+<li><strong>GitHub Issues</strong>: <a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">バグ報告・機能要望</a></li>
+<li><strong>Discord サポートサーバー</strong>: <a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">リアルタイムサポート</a></li>
 <li><strong>ドキュメント</strong>: <a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> | <a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">トラブルシューティング</a></li>
 </ol>
 <h2 id="🎓-次のステップ" tabindex="-1"><a class="header-anchor" href="#🎓-次のステップ"><span>🎓 次のステップ</span></a></h2>

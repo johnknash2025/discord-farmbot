@@ -166,3 +166,18 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 ## 📞 サポート
 
 問題や質問がある場合は、GitHubのIssuesでお知らせください。
+
+## 🌍 ドキュメント
+
+- **日本語**: [完全ドキュメント](https://johnknash2025.github.io/discord-farmbot/)
+- **English**: [English Documentation](https://johnknash2025.github.io/discord-farmbot/en/)
+
+## 🔗 リンク
+
+- **Discord サポートサーバー**: [参加はこちら](https://discord.gg/Gq9jPaMX8g)
+- **GitHub リポジトリ**: [discord-farmbot](https://github.com/johnknash2025/discord-farmbot)
+- **ドキュメントサイト**: [docs](https://johnknash2025.github.io/discord-farmbot/)
+
+---
+
+**Languages**: **日本語** | [English](README_EN.md) | [中文](README_CN.md) | [한국어](README_KR.md)

@@ -201,7 +201,7 @@ Discord Farmbotに関してよく寄せられる質問とその回答をまと�
    - [コマンドリファレンス](/user-guide/commands.html)
 
 2. **コミュニティサポート**
-   - [Discord サポートサーバー](https://discord.gg/your-support)
+   - [Discord サポートサーバー](https://discord.gg/Gq9jPaMX8g)
    - [GitHub Discussions](https://github.com/yourusername/discord-farmbot/discussions)
 
 3. **バグ報告**
@@ -231,7 +231,7 @@ Discord Farmbotに関してよく寄せられる質問とその回答をまと�
 ---
 
 ::: tip 💡 その他の質問
-このFAQで解決しない質問がございましたら、お気軽に[サポートチャンネル](https://discord.gg/your-support)でお尋ねください。コミュニティメンバーや開発チームがサポートいたします。
+このFAQで解決しない質問がございましたら、お気軽に[サポートチャンネル](https://discord.gg/Gq9jPaMX8g)でお尋ねください。コミュニティメンバーや開発チームがサポートいたします。
 :::
 
 ::: info 📝 FAQ更新

@@ -204,8 +204,8 @@ Discord Farmbotは以下のカテゴリの作物を解析できます：
 
 コマンドの使用で困った場合：
 
-1. **ドキュメント確認**: [FAQ](/user-guide/faq.html)
-2. **トラブルシューティング**: [問題解決ガイド](/user-guide/troubleshooting.html)
+1. **ドキュメント確認**: [FAQ](./faq.md)
+2. **トラブルシューティング**: [問題解決ガイド](./troubleshooting.md)
 3. **コミュニティサポート**: [Discord サーバー](https://discord.gg/Gq9jPaMX8g)
 4. **バグ報告**: [GitHub Issues](https://github.com/yourusername/discord-farmbot/issues)
 

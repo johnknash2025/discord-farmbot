@@ -94,16 +94,16 @@
 <p>問題が解決しない場合は、以下の方法でサポートを受けられます：</p>
 <ol>
 <li><strong>GitHub Issues</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">バグ報告・機能要望</a></li>
-<li><strong>Discord サポートサーバー</strong>: <a href="https://discord.gg/your-support-server" target="_blank" rel="noopener noreferrer">リアルタイムサポート</a></li>
-<li><strong>ドキュメント</strong>: <a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> | <a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">トラブルシューティング</a></li>
+<li><strong>Discord サポートサーバー</strong>: <a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">リアルタイムサポート</a></li>
+<li><strong>ドキュメント</strong>: <RouteLink to="/user-guide/faq.html">FAQ</RouteLink> | <RouteLink to="/user-guide/troubleshooting.html">トラブルシューティング</RouteLink></li>
 </ol>
 <h2 id="🎓-次のステップ" tabindex="-1"><a class="header-anchor" href="#🎓-次のステップ"><span>🎓 次のステップ</span></a></h2>
 <p>基本的な使用方法を理解したら、以下のページも参考にしてください：</p>
 <ul>
-<li><a href="/user-guide/commands.html" target="_blank" rel="noopener noreferrer">コマンド詳細</a> - 全コマンドの詳細説明</li>
-<li><a href="/user-guide/image-requirements.html" target="_blank" rel="noopener noreferrer">画像要件</a> - 最適な画像の撮り方</li>
-<li><a href="/user-guide/analysis-results.html" target="_blank" rel="noopener noreferrer">解析結果</a> - 結果の詳細な読み方</li>
-<li><a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> - よくある質問と回答</li>
+<li><RouteLink to="/user-guide/commands.html">コマンド詳細</RouteLink> - 全コマンドの詳細説明</li>
+<li><RouteLink to="/user-guide/image-requirements.html">画像要件</RouteLink> - 最適な画像の撮り方</li>
+<li><RouteLink to="/user-guide/analysis-results.html">解析結果</RouteLink> - 結果の詳細な読み方</li>
+<li><RouteLink to="/user-guide/faq.html">FAQ</RouteLink> - よくある質問と回答</li>
 </ul>
 <hr>
 <div class="hint-container tip">

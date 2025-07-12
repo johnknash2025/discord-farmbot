@@ -197,8 +197,8 @@ Discord Farmbotに関してよく寄せられる質問とその回答をまと�
 **A:** 以下の方法でサポートを受けられます：
 
 1. **ドキュメント確認**
-   - [トラブルシューティング](/user-guide/troubleshooting.html)
-   - [コマンドリファレンス](/user-guide/commands.html)
+   - [トラブルシューティング](./troubleshooting.md)
+   - [コマンドリファレンス](./commands.md)
 
 2. **コミュニティサポート**
    - [Discord サポートサーバー](https://discord.gg/Gq9jPaMX8g)

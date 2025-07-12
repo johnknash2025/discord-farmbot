@@ -281,10 +281,10 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🚀-次のステップ" tabindex="-1"><a class="header-anchor" href="#🚀-次のステップ"><span>🚀 次のステップ</span></a></h2>
 <p>開発環境が整ったら：</p>
 <ol>
-<li><strong><a href="/developer-guide/architecture.html" target="_blank" rel="noopener noreferrer">アーキテクチャ理解</a></strong> - システム構成の学習</li>
-<li><strong><a href="/developer-guide/api-reference.html" target="_blank" rel="noopener noreferrer">API リファレンス</a></strong> - API仕様の確認</li>
-<li><strong><a href="/developer-guide/testing.html" target="_blank" rel="noopener noreferrer">テストガイド</a></strong> - テスト方法の学習</li>
-<li><strong><a href="/developer-guide/contributing.html" target="_blank" rel="noopener noreferrer">コントリビューション</a></strong> - 開発参加方法</li>
+<li><strong><RouteLink to="/developer-guide/architecture.html">アーキテクチャ理解</RouteLink></strong> - システム構成の学習</li>
+<li><strong><RouteLink to="/developer-guide/api-reference.html">API リファレンス</RouteLink></strong> - API仕様の確認</li>
+<li><strong><RouteLink to="/developer-guide/testing.html">テストガイド</RouteLink></strong> - テスト方法の学習</li>
+<li><strong><RouteLink to="/developer-guide/contributing.html">コントリビューション</RouteLink></strong> - 開発参加方法</li>
 </ol>
 <hr>
 <div class="hint-container tip">

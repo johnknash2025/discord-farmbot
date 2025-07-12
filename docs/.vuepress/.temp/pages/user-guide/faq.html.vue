@@ -184,14 +184,14 @@
 <li>
 <p><strong>ドキュメント確認</strong></p>
 <ul>
-<li><a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">トラブルシューティング</a></li>
-<li><a href="/user-guide/commands.html" target="_blank" rel="noopener noreferrer">コマンドリファレンス</a></li>
+<li><RouteLink to="/user-guide/troubleshooting.html">トラブルシューティング</RouteLink></li>
+<li><RouteLink to="/user-guide/commands.html">コマンドリファレンス</RouteLink></li>
 </ul>
 </li>
 <li>
 <p><strong>コミュニティサポート</strong></p>
 <ul>
-<li><a href="https://discord.gg/your-support" target="_blank" rel="noopener noreferrer">Discord サポートサーバー</a></li>
+<li><a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">Discord サポートサーバー</a></li>
 <li><a href="https://github.com/yourusername/discord-farmbot/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
 </ul>
 </li>
@@ -222,7 +222,7 @@
 <hr>
 <div class="hint-container tip">
 <p class="hint-container-title">💡 その他の質問</p>
-<p>このFAQで解決しない質問がございましたら、お気軽に<a href="https://discord.gg/your-support" target="_blank" rel="noopener noreferrer">サポートチャンネル</a>でお尋ねください。コミュニティメンバーや開発チームがサポートいたします。</p>
+<p>このFAQで解決しない質問がございましたら、お気軽に<a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">サポートチャンネル</a>でお尋ねください。コミュニティメンバーや開発チームがサポートいたします。</p>
 </div>
 <div class="hint-container info">
 <p class="hint-container-title">📝 FAQ更新</p>

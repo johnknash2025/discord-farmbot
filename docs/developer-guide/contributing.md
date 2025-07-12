@@ -5,7 +5,7 @@ Discord Farmbotプロジェクトへのコントリビューションを歓迎�
 ## 🤝 コントリビューションの種類
 
 ### 1. バグ報告
-- [GitHub Issues](https://github.com/yourusername/discord-farmbot/issues) でバグを報告
+- [GitHub Issues](https://github.com/johnknash2025/discord-farmbot/issues) でバグを報告
 - 再現手順を詳細に記載
 - 環境情報（OS、Node.jsバージョンなど）を含める
 

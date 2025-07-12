@@ -39,7 +39,7 @@ Discord Farmbotを使って農作物の画像解析を始めましょう：
 # 画像を添付して送信
 ```
 
-[詳細な使用方法を見る →](./user-guide/getting-started.md)
+[詳細な使用方法を見る →](/user-guide/getting-started.html)
 
 ### 開発者の方
 
@@ -47,7 +47,7 @@ Discord Farmbotを使って農作物の画像解析を始めましょう：
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/yourusername/discord-farmbot.git
+git clone https://github.com/johnknash2025/discord-farmbot.git
 cd discord-farmbot
 
 # 依存関係をインストール
@@ -61,7 +61,7 @@ cp .dev.vars.example .dev.vars
 npm run start
 ```
 
-[開発者ガイドを見る →](./developer-guide/setup.md)
+[開発者ガイドを見る →](/developer-guide/setup.html)
 
 ## 📊 主な機能
 
@@ -154,13 +154,13 @@ Discord Farmbotは活発なコミュニティに支えられています：
 - **Pull Requests**: コードの改善や新機能の提案
 - **Discord Server**: リアルタイムサポート
 
-[コミュニティに参加する →](./developer-guide/contributing.md)
+[コミュニティに参加する →](/developer-guide/contributing.html)
 
 ## 📄 ライセンス
 
 Discord FarmbotはMITライセンスの下で公開されています。商用利用も含めて自由にご利用いただけます。
 
-[ライセンス詳細を見る →](https://github.com/yourusername/discord-farmbot/blob/main/LICENSE)
+[ライセンス詳細を見る →](https://github.com/johnknash2025/discord-farmbot/blob/main/LICENSE)
 
 <style>
 .stats-container {

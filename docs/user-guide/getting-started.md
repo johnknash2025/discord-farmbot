@@ -102,18 +102,18 @@ Discord Farmbotは、農作物の画像を解析してくれるAI搭載のDiscor
 
 問題が解決しない場合は、以下の方法でサポートを受けられます：
 
-1. **GitHub Issues**: [バグ報告・機能要望](https://github.com/yourusername/discord-farmbot/issues)
+1. **GitHub Issues**: [バグ報告・機能要望](https://github.com/johnknash2025/discord-farmbot/issues)
 2. **Discord サポートサーバー**: [リアルタイムサポート](https://discord.gg/Gq9jPaMX8g)
-3. **ドキュメント**: [FAQ](./faq.md) | [トラブルシューティング](./troubleshooting.md)
+3. **ドキュメント**: [FAQ](/user-guide/faq.html) | [トラブルシューティング](/user-guide/troubleshooting.html)
 
 ## 🎓 次のステップ
 
 基本的な使用方法を理解したら、以下のページも参考にしてください：
 
-- [コマンド詳細](./commands.md) - 全コマンドの詳細説明
-- [画像要件](./image-requirements.md) - 最適な画像の撮り方
-- [解析結果](./analysis-results.md) - 結果の詳細な読み方
-- [FAQ](./faq.md) - よくある質問と回答
+- [コマンド詳細](/user-guide/commands.html) - 全コマンドの詳細説明
+- [画像要件](/user-guide/image-requirements.html) - 最適な画像の撮り方
+- [解析結果](/user-guide/analysis-results.html) - 結果の詳細な読み方
+- [FAQ](/user-guide/faq.html) - よくある質問と回答
 
 ---
 

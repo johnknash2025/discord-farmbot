@@ -24,11 +24,11 @@ Discord Farmbotの開発環境を構築するための詳細ガイドです。
 
 ```bash
 # HTTPSでクローン
-git clone https://github.com/yourusername/discord-farmbot.git
+git clone https://github.com/johnknash2025/discord-farmbot.git
 cd discord-farmbot
 
 # または SSH でクローン
-git clone git@github.com:yourusername/discord-farmbot.git
+git clone git@github.com:johnknash2025/discord-farmbot.git
 cd discord-farmbot
 ```
 
@@ -355,10 +355,10 @@ try {
 
 開発環境が整ったら：
 
-1. **[アーキテクチャ理解](./architecture.md)** - システム構成の学習
-2. **[API リファレンス](./api-reference.md)** - API仕様の確認
-3. **[テストガイド](./testing.md)** - テスト方法の学習
-4. **[コントリビューション](./contributing.md)** - 開発参加方法
+1. **[アーキテクチャ理解](/developer-guide/architecture.html)** - システム構成の学習
+2. **[API リファレンス](/developer-guide/api-reference.html)** - API仕様の確認
+3. **[テストガイド](/developer-guide/testing.html)** - テスト方法の学習
+4. **[コントリビューション](/developer-guide/contributing.html)** - 開発参加方法
 
 ---
 

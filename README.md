@@ -1,52 +1,52 @@
 # 🌱 Discord Farmbot
 
-農作物画像を解析するDiscord Bot。Gemini Vision APIを使用して、農作物の種類、成長段階、健康状態などを詳細に分析します。
+An AI-powered Discord Bot that analyzes crop images. Uses Gemini Vision API to provide detailed analysis of crop types, growth stages, health conditions, and more.
 
-## ✨ 機能
+## ✨ Features
 
-- 🔍 **画像解析**: Gemini Vision APIによる高精度な農作物解析
-- 🌾 **専門的評価**: 作物の種類、成長段階、健康状態を詳細に診断
-- 💬 **Discord統合**: Slash Commandで簡単操作
-- 🔄 **自動返信**: 解析結果をスレッドに自動投稿
-- ☁️ **24/7稼働**: Cloudflare Workersで常時稼働
+- 🔍 **Image Analysis**: High-precision crop analysis using Gemini Vision API
+- 🌾 **Professional Assessment**: Detailed diagnosis of crop types, growth stages, and health conditions
+- 💬 **Discord Integration**: Easy operation with Slash Commands
+- 🔄 **Auto Reply**: Analysis results automatically posted in threads
+- ☁️ **24/7 Operation**: Always running on Cloudflare Workers
 
-## 🚀 使用方法
+## 🚀 Usage
 
-1. Discordサーバーで `/analyze` コマンドを実行
-2. 農作物の画像を添付（500KB以下）
-3. 数秒後にスレッドに詳細な解析結果が投稿される
+1. Run `/analyze` command in Discord server
+2. Attach crop image (500KB or less)
+3. Detailed analysis results will be posted in thread after a few seconds
 
-### 解析内容
+### Analysis Content
 
-- **作物の種類**: 植物の特定
-- **成長段階**: 発芽期〜収穫期の判定
-- **健康状態**: 病気や害虫の兆候
-- **栽培環境**: 土壌・水分・日照状態
-- **品質評価**: 収穫時期の予測
-- **改善提案**: 栽培管理のアドバイス
+- **Crop Type**: Plant identification
+- **Growth Stage**: Assessment from germination to harvest
+- **Health Status**: Disease and pest sign detection
+- **Growing Environment**: Soil, moisture, and light conditions
+- **Quality Assessment**: Harvest timing prediction
+- **Improvement Suggestions**: Cultivation management advice
 
-## 🛠️ セットアップ
+## 🛠️ Setup
 
-### 必要な環境
+### Prerequisites
 
 - Node.js 18+
-- Cloudflare Workers アカウント
-- Discord Developer アカウント
-- Google AI Studio アカウント（Gemini API）
+- Cloudflare Workers account
+- Discord Developer account
+- Google AI Studio account (Gemini API)
 
-### 1. 依存関係のインストール
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. 環境変数の設定
+### 2. Environment Variables Setup
 
 ```bash
 cp .dev.vars.example .dev.vars
 ```
 
-`.dev.vars` ファイルを編集して以下を設定：
+Edit `.dev.vars` file and configure the following:
 
 ```env
 DISCORD_PUBLIC_KEY=your_discord_public_key
@@ -54,61 +54,61 @@ DISCORD_BOT_TOKEN=your_discord_bot_token
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-### 3. Discord Bot の設定
+### 3. Discord Bot Configuration
 
-1. [Discord Developer Portal](https://discord.com/developers/applications) でアプリケーション作成
-2. Bot を作成してトークンを取得
-3. 以下の権限を設定：
+1. Create application at [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create bot and get token
+3. Set the following permissions:
    - `applications.commands`
    - `bot`
    - `Send Messages`
    - `Use Slash Commands`
    - `Read Message History`
 
-### 4. Slash Command の登録
+### 4. Register Slash Commands
 
 ```bash
 node scripts/register-commands.js
 ```
 
-### 5. ローカル開発
+### 5. Local Development
 
 ```bash
 npm run start
 ```
 
-### 6. 本番デプロイ
+### 6. Production Deployment
 
 ```bash
-# 環境変数を本番環境に設定
+# Set environment variables for production
 ./scripts/deploy-secrets.sh
 
-# デプロイ実行
+# Deploy
 npm run deploy
 ```
 
-## 📁 プロジェクト構造
+## 📁 Project Structure
 
 ```
 discord-farmbot/
-├── farmbot.js              # メインWorkerファイル
-├── package.json            # 依存関係設定
-├── wrangler.toml           # Cloudflare Workers設定
-├── .dev.vars.example       # 環境変数テンプレート
-├── docs/                   # ドキュメント
-│   ├── TESTING.md         # テストガイド
-│   ├── production-setup.md # 本番環境セットアップ
-│   └── setup-tunnel.md    # 開発環境セットアップ
-├── scripts/               # ユーティリティスクリプト
-│   ├── deploy-secrets.sh  # 環境変数デプロイ
-│   └── register-commands.js # Slash Command登録
-└── tests/                 # テストファイル
-    ├── test-env.js        # 環境変数テスト
-    ├── test-gemini-api.js # Gemini APIテスト
+├── farmbot.js              # Main Worker file
+├── package.json            # Dependencies configuration
+├── wrangler.toml           # Cloudflare Workers configuration
+├── .dev.vars.example       # Environment variables template
+├── docs/                   # Documentation
+│   ├── TESTING.md         # Testing guide
+│   ├── production-setup.md # Production setup
+│   └── setup-tunnel.md    # Development environment setup
+├── scripts/               # Utility scripts
+│   ├── deploy-secrets.sh  # Environment variable deployment
+│   └── register-commands.js # Slash command registration
+└── tests/                 # Test files
+    ├── test-env.js        # Environment variable tests
+    ├── test-gemini-api.js # Gemini API tests
     └── ...
 ```
 
-## 🔧 技術スタック
+## 🔧 Tech Stack
 
 - **Runtime**: Cloudflare Workers
 - **Language**: JavaScript (ES Modules)
@@ -116,68 +116,68 @@ discord-farmbot/
 - **Platform**: Discord API v10
 - **Deployment**: Wrangler CLI
 
-## 📊 API制限
+## 📊 API Limitations
 
-- **画像サイズ**: 500KB以下
-- **対応形式**: PNG, JPEG, WEBP
-- **Gemini API**: 無料枠内で利用
-- **Workers**: 100,000リクエスト/日（無料枠）
+- **Image Size**: 500KB or less
+- **Supported Formats**: PNG, JPEG, WEBP
+- **Gemini API**: Used within free tier
+- **Workers**: 100,000 requests/day (free tier)
 
-## 🐛 トラブルシューティング
+## 🐛 Troubleshooting
 
-### よくある問題
+### Common Issues
 
 1. **"Invalid request signature"**
-   - DISCORD_PUBLIC_KEY が正しく設定されているか確認
+   - Check if DISCORD_PUBLIC_KEY is correctly set
 
 2. **"Image too large"**
-   - 画像サイズを500KB以下に圧縮
+   - Compress image to 500KB or less
 
 3. **"Gemini API error: 400"**
-   - GEMINI_API_KEY が有効か確認
-   - 画像形式が対応しているか確認
+   - Verify GEMINI_API_KEY is valid
+   - Check if image format is supported
 
-### ログ確認
+### Log Checking
 
 ```bash
-# 本番環境のログ監視
+# Monitor production logs
 wrangler tail
 
-# 環境変数確認
+# Check environment variables
 wrangler secret list
 ```
 
-## 📈 今後の改善予定
+## 📈 Future Improvements
 
-- [ ] 自動画像検知機能
-- [ ] 解析履歴の保存
-- [ ] 複数画像の一括解析
-- [ ] 専門用語辞書の追加
-- [ ] 多言語対応
+- [ ] Automatic image detection feature
+- [ ] Analysis history storage
+- [ ] Batch analysis of multiple images
+- [ ] Technical terminology dictionary
+- [ ] Multi-language support
 
-## 📄 ライセンス
+## 📄 License
 
-MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
+MIT License - See [LICENSE](LICENSE) file for details
 
-## 🤝 コントリビューション
+## 🤝 Contributing
 
-プルリクエストやイシューの報告を歓迎します！
+Pull requests and issue reports are welcome!
 
-## 📞 サポート
+## 📞 Support
 
-問題や質問がある場合は、GitHubのIssuesでお知らせください。
+If you have any problems or questions, please let us know through GitHub Issues.
 
-## 🌍 ドキュメント
+## 🌍 Documentation
 
-- **日本語**: [完全ドキュメント](https://johnknash2025.github.io/discord-farmbot/)
+- **Japanese**: [Complete Documentation](https://johnknash2025.github.io/discord-farmbot/)
 - **English**: [English Documentation](https://johnknash2025.github.io/discord-farmbot/en/)
 
-## 🔗 リンク
+## 🔗 Links
 
-- **Discord サポートサーバー**: [参加はこちら](https://discord.gg/Gq9jPaMX8g)
-- **GitHub リポジトリ**: [discord-farmbot](https://github.com/johnknash2025/discord-farmbot)
-- **ドキュメントサイト**: [docs](https://johnknash2025.github.io/discord-farmbot/)
+- **Discord Support Server**: [Join Here](https://discord.gg/Gq9jPaMX8g)
+- **GitHub Repository**: [discord-farmbot](https://github.com/johnknash2025/discord-farmbot)
+- **Documentation Site**: [docs](https://johnknash2025.github.io/discord-farmbot/)
 
 ---
 
-**Languages**: **日本語** | [English](README_EN.md) | [中文](README_CN.md) | [한국어](README_KR.md)
+**Languages**: [日本語](README_JP.md) | **English** | [中文](README_CN.md) | [한국어](README_KR.md)

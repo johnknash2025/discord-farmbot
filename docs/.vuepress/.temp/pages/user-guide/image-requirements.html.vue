@@ -216,8 +216,8 @@
 <h3 id="参考リソース" tabindex="-1"><a class="header-anchor" href="#参考リソース"><span>参考リソース</span></a></h3>
 <ul>
 <li><a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">Discord サポートサーバー</a> - 撮影のコツを共有</li>
-<li><a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> - 改善要望</li>
-<li><RouteLink to="/user-guide/faq.html">FAQ</RouteLink> - よくある質問</li>
+<li><a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> - 改善要望</li>
+<li><a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> - よくある質問</li>
 </ul>
 <hr>
 <div class="hint-container tip">

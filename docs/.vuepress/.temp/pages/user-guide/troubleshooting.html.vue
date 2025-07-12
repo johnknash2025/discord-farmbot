@@ -168,7 +168,7 @@
 <li>🤝 コミュニティメンバーからのサポート</li>
 </ul>
 <h4 id="_2-github-issues" tabindex="-1"><a class="header-anchor" href="#_2-github-issues"><span>2. GitHub Issues</span></a></h4>
-<p><strong>URL</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></p>
+<p><strong>URL</strong>: <a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></p>
 <ul>
 <li>🐛 バグ報告</li>
 <li>💡 機能要望</li>
@@ -226,7 +226,7 @@
 <h3 id="メンテナンス情報の確認" tabindex="-1"><a class="header-anchor" href="#メンテナンス情報の確認"><span>メンテナンス情報の確認</span></a></h3>
 <ul>
 <li><strong>Discord サーバー</strong>: <code v-pre>#お知らせ</code> チャンネル</li>
-<li><strong>GitHub</strong>: <a href="https://github.com/yourusername/discord-farmbot/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+<li><strong>GitHub</strong>: <a href="https://github.com/johnknash2025/discord-farmbot/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
 <li><strong>ステータスページ</strong>: https://status.farmbot.example.com</li>
 </ul>
 <hr>

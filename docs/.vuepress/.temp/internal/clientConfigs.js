@@ -9,7 +9,6 @@ import * as clientConfig7 from '/Users/johnkhappy/github/bots/discord-farmbot/do
 import * as clientConfig8 from '/Users/johnkhappy/github/bots/discord-farmbot/docs/.vuepress/.temp/markdown-tab/config.js'
 import * as clientConfig9 from '/Users/johnkhappy/github/bots/discord-farmbot/docs/node_modules/@vuepress/plugin-theme-data/lib/client/config.js'
 import * as clientConfig10 from '/Users/johnkhappy/github/bots/discord-farmbot/docs/node_modules/@vuepress/theme-default/lib/client/config.js'
-import * as clientConfig11 from '/Users/johnkhappy/github/bots/discord-farmbot/docs/node_modules/@vuepress/plugin-google-analytics/lib/client/config.js'
 
 export const clientConfigs = [
   clientConfig0,
@@ -23,5 +22,4 @@ export const clientConfigs = [
   clientConfig8,
   clientConfig9,
   clientConfig10,
-  clientConfig11,
 ].map((m) => m.default).filter(Boolean)

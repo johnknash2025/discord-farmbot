@@ -184,28 +184,28 @@
 <li>
 <p><strong>ドキュメント確認</strong></p>
 <ul>
-<li><RouteLink to="/user-guide/troubleshooting.html">トラブルシューティング</RouteLink></li>
-<li><RouteLink to="/user-guide/commands.html">コマンドリファレンス</RouteLink></li>
+<li><a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">トラブルシューティング</a></li>
+<li><a href="/user-guide/commands.html" target="_blank" rel="noopener noreferrer">コマンドリファレンス</a></li>
 </ul>
 </li>
 <li>
 <p><strong>コミュニティサポート</strong></p>
 <ul>
 <li><a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">Discord サポートサーバー</a></li>
-<li><a href="https://github.com/yourusername/discord-farmbot/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
+<li><a href="https://github.com/johnknash2025/discord-farmbot/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
 </ul>
 </li>
 <li>
 <p><strong>バグ報告</strong></p>
 <ul>
-<li><a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
+<li><a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
 </ul>
 </li>
 </ol>
 <h3 id="q-新機能の要望はどこに送ればいいですか" tabindex="-1"><a class="header-anchor" href="#q-新機能の要望はどこに送ればいいですか"><span>Q: 新機能の要望はどこに送ればいいですか？</span></a></h3>
 <p><strong>A:</strong> 以下の方法で要望をお送りください：</p>
 <ul>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">Feature Request</a></li>
+<li><strong>GitHub Issues</strong>: <a href="https://github.com/johnknash2025/discord-farmbot/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">Feature Request</a></li>
 <li><strong>Discord</strong>: サポートサーバーの要望チャンネル</li>
 <li><strong>メール</strong>: support@farmbot.example.com</li>
 </ul>

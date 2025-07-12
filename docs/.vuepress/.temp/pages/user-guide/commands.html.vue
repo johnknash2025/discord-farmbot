@@ -199,10 +199,10 @@
 <h2 id="🆘-サポート" tabindex="-1"><a class="header-anchor" href="#🆘-サポート"><span>🆘 サポート</span></a></h2>
 <p>コマンドの使用で困った場合：</p>
 <ol>
-<li><strong>ドキュメント確認</strong>: <RouteLink to="/user-guide/faq.html">FAQ</RouteLink></li>
-<li><strong>トラブルシューティング</strong>: <RouteLink to="/user-guide/troubleshooting.html">問題解決ガイド</RouteLink></li>
+<li><strong>ドキュメント確認</strong>: <a href="/user-guide/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+<li><strong>トラブルシューティング</strong>: <a href="/user-guide/troubleshooting.html" target="_blank" rel="noopener noreferrer">問題解決ガイド</a></li>
 <li><strong>コミュニティサポート</strong>: <a href="https://discord.gg/Gq9jPaMX8g" target="_blank" rel="noopener noreferrer">Discord サーバー</a></li>
-<li><strong>バグ報告</strong>: <a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
+<li><strong>バグ報告</strong>: <a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a></li>
 </ol>
 <hr>
 <div class="hint-container tip">

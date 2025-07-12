@@ -294,7 +294,7 @@
 <li>[ ] 依存関係の更新</li>
 </ul>
 <h2 id="🔄-継続的デプロイ" tabindex="-1"><a class="header-anchor" href="#🔄-継続的デプロイ"><span>🔄 継続的デプロイ</span></a></h2>
-<p>GitHub Actions を使用した自動デプロイの設定は、<a href="/deployment/ci-cd.html" target="_blank" rel="noopener noreferrer">CI/CD設定ガイド</a>をご参照ください。</p>
+<p>GitHub Actions を使用した自動デプロイの設定は、<RouteLink to="/deployment/ci-cd.html">CI/CD設定ガイド</RouteLink>をご参照ください。</p>
 <hr>
 <div class="hint-container tip">
 <p class="hint-container-title">💡 本番運用のコツ</p>

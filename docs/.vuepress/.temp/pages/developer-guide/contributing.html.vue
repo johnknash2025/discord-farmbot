@@ -3,7 +3,7 @@
 <h2 id="🤝-コントリビューションの種類" tabindex="-1"><a class="header-anchor" href="#🤝-コントリビューションの種類"><span>🤝 コントリビューションの種類</span></a></h2>
 <h3 id="_1-バグ報告" tabindex="-1"><a class="header-anchor" href="#_1-バグ報告"><span>1. バグ報告</span></a></h3>
 <ul>
-<li><a href="https://github.com/yourusername/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> でバグを報告</li>
+<li><a href="https://github.com/johnknash2025/discord-farmbot/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> でバグを報告</li>
 <li>再現手順を詳細に記載</li>
 <li>環境情報（OS、Node.jsバージョンなど）を含める</li>
 </ul>

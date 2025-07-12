@@ -5,11 +5,11 @@
 <span class="line">/analyze</span>
 <span class="line"><span class="token comment"># 画像を添付して送信</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><RouteLink to="/user-guide/getting-started.html">詳細な使用方法を見る →</RouteLink></p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="/user-guide/getting-started.html" target="_blank" rel="noopener noreferrer">詳細な使用方法を見る →</a></p>
 <h3 id="開発者の方" tabindex="-1"><a class="header-anchor" href="#開発者の方"><span>開発者の方</span></a></h3>
 <p>自分のサーバーにDiscord Farmbotをデプロイしましょう：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code class="language-bash"><span class="line"><span class="token comment"># リポジトリをクローン</span></span>
-<span class="line"><span class="token function">git</span> clone https://github.com/yourusername/discord-farmbot.git</span>
+<span class="line"><span class="token function">git</span> clone https://github.com/johnknash2025/discord-farmbot.git</span>
 <span class="line"><span class="token builtin class-name">cd</span> discord-farmbot</span>
 <span class="line"></span>
 <span class="line"><span class="token comment"># 依存関係をインストール</span></span>
@@ -22,7 +22,7 @@
 <span class="line"><span class="token comment"># ローカル開発開始</span></span>
 <span class="line"><span class="token function">npm</span> run start</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><RouteLink to="/developer-guide/setup.html">開発者ガイドを見る →</RouteLink></p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="/developer-guide/setup.html" target="_blank" rel="noopener noreferrer">開発者ガイドを見る →</a></p>
 <h2 id="📊-主な機能" tabindex="-1"><a class="header-anchor" href="#📊-主な機能"><span>📊 主な機能</span></a></h2>
 <h3 id="🔍-画像解析機能" tabindex="-1"><a class="header-anchor" href="#🔍-画像解析機能"><span>🔍 画像解析機能</span></a></h3>
 <ul>
@@ -100,10 +100,10 @@
 <li><strong>Pull Requests</strong>: コードの改善や新機能の提案</li>
 <li><strong>Discord Server</strong>: リアルタイムサポート</li>
 </ul>
-<p><RouteLink to="/developer-guide/contributing.html">コミュニティに参加する →</RouteLink></p>
+<p><a href="/developer-guide/contributing.html" target="_blank" rel="noopener noreferrer">コミュニティに参加する →</a></p>
 <h2 id="📄-ライセンス" tabindex="-1"><a class="header-anchor" href="#📄-ライセンス"><span>📄 ライセンス</span></a></h2>
 <p>Discord FarmbotはMITライセンスの下で公開されています。商用利用も含めて自由にご利用いただけます。</p>
-<p><a href="https://github.com/yourusername/discord-farmbot/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">ライセンス詳細を見る →</a></p>
+<p><a href="https://github.com/johnknash2025/discord-farmbot/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">ライセンス詳細を見る →</a></p>
 </div></template>
 
 

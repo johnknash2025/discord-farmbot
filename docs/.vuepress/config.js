@@ -6,13 +6,23 @@ import { webpackBundler } from '@vuepress/bundler-webpack'
 export default defineUserConfig({
   // バンドラー設定
   bundler: webpackBundler({}),
-  // サイト設定
-  lang: 'ja-JP',
-  title: 'Discord Farmbot',
-  description: '農作物画像解析Discord Bot - 詳細ドキュメント',
   
   // ベースURL（GitHub Pagesの場合）
   base: '/discord-farmbot/',
+  
+  // 多言語設定
+  locales: {
+    '/': {
+      lang: 'ja-JP',
+      title: 'Discord Farmbot',
+      description: '農作物画像解析Discord Bot - 詳細ドキュメント',
+    },
+    '/en/': {
+      lang: 'en-US',
+      title: 'Discord Farmbot',
+      description: 'AI-powered crop image analysis Discord Bot - Complete documentation',
+    },
+  },
   
   // ヘッド設定
   head: [
@@ -36,45 +46,99 @@ export default defineUserConfig({
 
   // テーマ設定
   theme: defaultTheme({
-    // ナビゲーション
-    navbar: [
-      {
-        text: 'ホーム',
-        link: '/',
-      },
-      {
-        text: 'ユーザーガイド',
-        children: [
-          '/user-guide/getting-started.md',
-          '/user-guide/commands.md',
-          '/user-guide/troubleshooting.md',
+    // 多言語ナビゲーション
+    locales: {
+      '/': {
+        // 日本語ナビゲーション
+        navbar: [
+          {
+            text: 'ホーム',
+            link: '/',
+          },
+          {
+            text: 'ユーザーガイド',
+            children: [
+              '/user-guide/getting-started.md',
+              '/user-guide/commands.md',
+              '/user-guide/troubleshooting.md',
+            ],
+          },
+          {
+            text: '開発者ガイド',
+            children: [
+              '/developer-guide/setup.md',
+              '/developer-guide/api-reference.md',
+              '/developer-guide/architecture.md',
+              '/developer-guide/contributing.md',
+            ],
+          },
+          {
+            text: 'デプロイ',
+            children: [
+              '/deployment/local-development.md',
+              '/deployment/production.md',
+              '/deployment/monitoring.md',
+            ],
+          },
+          {
+            text: 'GitHub',
+            link: 'https://github.com/johnknash2025/discord-farmbot',
+          },
         ],
+        selectLanguageName: '日本語',
+        selectLanguageText: '言語を選択',
+        editLinkText: 'このページを編集',
+        lastUpdatedText: '最終更新',
+        contributorsText: '貢献者',
       },
-      {
-        text: '開発者ガイド',
-        children: [
-          '/developer-guide/setup.md',
-          '/developer-guide/api-reference.md',
-          '/developer-guide/architecture.md',
-          '/developer-guide/contributing.md',
+      '/en/': {
+        // 英語ナビゲーション
+        navbar: [
+          {
+            text: 'Home',
+            link: '/en/',
+          },
+          {
+            text: 'User Guide',
+            children: [
+              '/en/user-guide/getting-started.md',
+              '/en/user-guide/commands.md',
+              '/en/user-guide/troubleshooting.md',
+            ],
+          },
+          {
+            text: 'Developer Guide',
+            children: [
+              '/en/developer-guide/setup.md',
+              '/en/developer-guide/api-reference.md',
+              '/en/developer-guide/architecture.md',
+              '/en/developer-guide/contributing.md',
+            ],
+          },
+          {
+            text: 'Deployment',
+            children: [
+              '/en/deployment/local-development.md',
+              '/en/deployment/production.md',
+              '/en/deployment/monitoring.md',
+            ],
+          },
+          {
+            text: 'GitHub',
+            link: 'https://github.com/johnknash2025/discord-farmbot',
+          },
         ],
+        selectLanguageName: 'English',
+        selectLanguageText: 'Select Language',
+        editLinkText: 'Edit this page',
+        lastUpdatedText: 'Last Updated',
+        contributorsText: 'Contributors',
       },
-      {
-        text: 'デプロイ',
-        children: [
-          '/deployment/local-development.md',
-          '/deployment/production.md',
-          '/deployment/monitoring.md',
-        ],
-      },
-      {
-        text: 'GitHub',
-        link: 'https://github.com/johnknash2025/discord-farmbot',
-      },
-    ],
+    },
 
-    // サイドバー
+    // 多言語サイドバー
     sidebar: {
+      // 日本語サイドバー
       '/user-guide/': [
         {
           text: 'ユーザーガイド',
@@ -113,23 +177,59 @@ export default defineUserConfig({
           ],
         },
       ],
+      // 英語サイドバー
+      '/en/user-guide/': [
+        {
+          text: 'User Guide',
+          children: [
+            '/en/user-guide/getting-started.md',
+            '/en/user-guide/commands.md',
+            '/en/user-guide/image-requirements.md',
+            '/en/user-guide/analysis-results.md',
+            '/en/user-guide/troubleshooting.md',
+            '/en/user-guide/faq.md',
+          ],
+        },
+      ],
+      '/en/developer-guide/': [
+        {
+          text: 'Developer Guide',
+          children: [
+            '/en/developer-guide/setup.md',
+            '/en/developer-guide/architecture.md',
+            '/en/developer-guide/api-reference.md',
+            '/en/developer-guide/testing.md',
+            '/en/developer-guide/contributing.md',
+            '/en/developer-guide/code-style.md',
+          ],
+        },
+      ],
+      '/en/deployment/': [
+        {
+          text: 'Deployment',
+          children: [
+            '/en/deployment/local-development.md',
+            '/en/deployment/production.md',
+            '/en/deployment/environment-variables.md',
+            '/en/deployment/monitoring.md',
+            '/en/deployment/scaling.md',
+          ],
+        },
+      ],
     },
 
-    // リポジトリ設定
+    // 共通設定
     repo: 'johnknash2025/discord-farmbot',
     repoLabel: 'GitHub',
     docsDir: 'docs',
     docsBranch: 'main',
     editLinks: true,
-    editLinkText: 'このページを編集',
 
     // 最終更新時刻
     lastUpdated: true,
-    lastUpdatedText: '最終更新',
 
     // 貢献者
     contributors: true,
-    contributorsText: '貢献者',
 
     // 検索
     searchMaxSuggestions: 10,
